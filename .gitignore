@@ -20,3 +20,4 @@ Thumbs.db
 # If not using Git LFS and want to exclude large files manually:
 # similarity.pkl
 # movies_dict.pkl
+/similarity.pkl
