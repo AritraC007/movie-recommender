@@ -1,1 +1,22 @@
-venv
+# Python cache
+__pycache__/
+*.py[cod]
+*.env
+.env
+
+# Streamlit cache
+.streamlit/
+
+# Data files
+*.csv
+
+# VSCode (if switching editors)
+.vscode/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# If not using Git LFS and want to exclude large files manually:
+# similarity.pkl
+# movies_dict.pkl
