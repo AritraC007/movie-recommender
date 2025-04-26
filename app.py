@@ -2,8 +2,18 @@ import streamlit as st
 import pickle
 import pandas as pd
 import requests
+import gdown
+import os
 
+# Download similarity.pkl from Google Drive if not present
+SIMILARITY_FILE = "similarity.pkl"
+DRIVE_URL = "https://drive.google.com/uc?id=1GTTYQ3spHQPYXY6LqDXN7fJohg6m9bKI"
 
+if not os.path.exists(SIMILARITY_FILE):
+    with st.spinner("Downloading similarity matrix..."):
+        gdown.download(DRIVE_URL, SIMILARITY_FILE, quiet=False)
+
+# Load data
 movies_dict = pickle.load(open('movies_dict.pkl', 'rb'))
 movies = pd.DataFrame(movies_dict)
 similarity = pickle.load(open('similarity.pkl', 'rb'))
@@ -43,7 +53,7 @@ def recommend(movie_name):
 
     return recommended_list, recommended_movie_posters
 
-st.title('🎬 Movie Recommendation System')
+st.title('🎬Movie Recommendation System')
 
 movie_name = st.selectbox(
     "Select a movie you liked:",
