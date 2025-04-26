@@ -37,7 +37,7 @@ def find_index(movie):
         if m['title'] == movie:
             return index
     return -1
-
+@st.cache_data
 def recommend(movie_name):
     index = find_index(movie_name)
     dist = list(enumerate(similarity[index]))
@@ -49,7 +49,8 @@ def recommend(movie_name):
     for m in suggested_movies:
         movie_data = movies.iloc[m[0]]
         recommended_list.append(movie_data.title)
-        recommended_movie_posters.append(fetch_poster(movie_data.id))
+        poster_url=fetch_poster(movie_data.id)
+        recommended_movie_posters.append(poster_url)
 
     return recommended_list, recommended_movie_posters
 
